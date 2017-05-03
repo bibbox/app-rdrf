@@ -5,7 +5,7 @@ networks:
       external: true
 
 services:
-  §§INSTANCE-adminer:
+  §§INSTANCE-rdrf:
     image: muccg/rdrf
     container_name:  §§INSTANCE-rdrf
     restart: unless-stopped
@@ -16,10 +16,10 @@ services:
     ports:
       - "§§PORT:80"
 
-    §§INSTANCE-rdrf-data:
-      image: busybox
-      container_name: §§INSTANCE-rdrf-data
-      volumes:
+  §§INSTANCE-rdrf-data:
+    image: busybox
+    container_name: §§INSTANCE-rdrf-data
+    volumes:
         - ./data:/data
       
       
