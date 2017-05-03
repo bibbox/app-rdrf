@@ -1,4 +1,4 @@
 {
-  runningcontainers:["§§INSTANCE-rdrf", "§§INSTANCE-db", "§§INSTANCE-dbclinical", "§§INSTANCE-cache", "§§INSTANCE-mongo", "§§INSTANCE-triplestore",  "§§INSTANCE-nginx",     ],
+  runningcontainers:["§§INSTANCE-rdrf", "§§INSTANCE-db", "§§INSTANCE-dbclinical", "§§INSTANCE-cache", "§§INSTANCE-mongo", "§§INSTANCE-triplestore"     ],
   supportcontainers:["§§INSTANCE-rdrf-data"]    
 }

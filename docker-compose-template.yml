@@ -44,6 +44,11 @@ services:
     image: muccg/jasper-reports-server:6.1.1
     container_name:  §§INSTANCE-jasper
     command: development
+    links:
+        - §§INSTANCE-db:db
+        - §§INSTANCE-dbclinical:dbclinical
+        - §§INSTANCE-cache:cache
+        - §§INSTANCE-mongo:mongo 
     ports:
       - "8080"
     environment:
@@ -86,7 +91,6 @@ services:
     container_name:  §INSTANCE-triplestore       
     ports:
       - "10035"
-
 
   §§INSTANCE-rdrf-data:
     image: busybox
