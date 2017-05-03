@@ -6,7 +6,7 @@ networks:
 
 services:
   §§INSTANCE-rdrf:
-    image: muccg/rdrf
+    image: muccg/rdrf:2.0.6
     container_name:  §§INSTANCE-rdrf
     restart: unless-stopped
     networks:
