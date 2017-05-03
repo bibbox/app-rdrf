@@ -88,34 +88,34 @@ services:
 
   §§INSTANCE-cache:
     image: memcached:1.4
+    container_name:  §§INSTANCE-cache  
     restart: unless-stopped
     networks:
       - bibbox-default-network
-    container_name:  §§INSTANCE-cache  
 
   §§INSTANCE-mongo:
     image: mongo:3.0
+    container_name:  §§INSTANCE-mongo
     restart: unless-stopped
     networks:
       - bibbox-default-network
-    container_name:  §§INSTANCE-mongo     
     command: mongod --smallfiles
-
+    
   §§INSTANCE-triplestore:
     image: muccg/allegro:4.14.1
+    container_name:  §§INSTANCE-triplestore
     restart: unless-stopped
     networks:
       - bibbox-default-network
-    container_name:  §INSTANCE-triplestore
     ports:
       - "10035"
 
   §§INSTANCE-rdrf-data:
     image: busybox
+    container_name:  §§INSTANCE-rdrf-data
     restart: unless-stopped
     networks:
       - bibbox-default-network
-    container_name:  §§INSTANCE-rdrf-data    
     volumes:
         - ./data:/data
       
