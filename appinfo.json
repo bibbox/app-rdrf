@@ -1,0 +1,10 @@
+{
+		"name": "Rare Disease Registry Framework",
+		"short_name": "RDRF",
+		"version": "v2.0.6",
+		"description": "Rare Disease Registry Framework",
+        "short_description": "Rare Disease Registry Framework",
+		"catalogue_url": "",
+		"application_url": "https://muccg.github.io/rdrf/",
+		"tags": ["Database", "Registries"]
+}

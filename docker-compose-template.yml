@@ -1,0 +1,25 @@
+version: '2'
+
+networks:
+    bibbox-default-network:
+      external: true
+
+services:
+  §§INSTANCE-adminer:
+    image: muccg/rdrf
+    container_name:  §§INSTANCE-rdrf
+    restart: unless-stopped
+    networks:
+      - bibbox-default-network
+    volumes_from:
+      - §§INSTANCE-rdrf-data
+    ports:
+      - "§§PORT:80"
+
+    §§INSTANCE-rdrf-data:
+      image: busybox
+      container_name: §§INSTANCE-rdrf-data
+      volumes:
+        - ./data:/data
+      
+      
