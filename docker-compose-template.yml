@@ -13,8 +13,75 @@ services:
       - bibbox-default-network
     volumes_from:
       - §§INSTANCE-rdrf-data
+    depends_on:
+        - §§INSTANCE-db
+        - §§INSTANCE-dbclinical
+        - §§INSTANCE-cache
+        - §§INSTANCE-mongo      
+    environment:
+      - DEBUG=0
+      - WAIT_FOR_DB=1
+      - WAIT_FOR_CLINICAL_DB=1
+      - WAIT_FOR_CACHE=1
+      - WAIT_FOR_MONGO=1
+      - DJANGO_FIXTURES=test
+      - ALLOWED_HOSTS=*
+      - CSRF_TRUSTED_ORIGINS=localhost nginxtest
+      - CACHESERVER=cache
+      - DBSERVER=db
+      - CLINICAL_DBSERVER=dbclinical
+      - MONGOSERVER=mongo
     ports:
-      - "§§PORT:80"
+      - "§§PORT:80"      
+      
+  §§INSTANCE-jasper:
+    image: muccg/jasper-reports-server:6.1.1
+    command: development
+    ports:
+      - "8080"
+    environment:
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_NAME=webapp
+      - DB_USERNAME=webapp
+      - DB_PASSWORD=webapp
+      - WAIT_FOR_DB=1
+
+  §§INSTANCE-db:
+    image: muccg/postgres-ssl:9.4
+    environment:
+      - POSTGRES_USER=webapp
+      - POSTGRES_PASSWORD=webapp
+    ports:
+      - "5432"
+
+  §§INSTANCE-dbclinical:
+    image: muccg/postgres-ssl:9.4
+    environment:
+      - POSTGRES_USER=webapp
+      - POSTGRES_PASSWORD=webapp
+    ports:
+      - "5432"
+
+  §§INSTANCE-cache:
+    image: memcached:1.4
+
+  §§INSTANCE-mongo:
+    image: mongo:3.0
+    command: mongod --smallfiles
+
+  §§INSTANCE-triplestore:
+    image: muccg/allegro:4.14.1
+    ports:
+      - "10035"
+
+  §§INSTANCE-nginx:
+    image: muccg/nginx-uwsgi:1.10
+    ports:
+      - "8443:443"
+      - "8080:80"
+    volumes:
+      - ./data/nginx:/data
 
   §§INSTANCE-rdrf-data:
     image: busybox
