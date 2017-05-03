@@ -42,6 +42,7 @@ services:
       
   §§INSTANCE-jasper:
     image: muccg/jasper-reports-server:6.1.1
+    container_name:  §§INSTANCE-jasper
     command: development
     ports:
       - "8080"
@@ -55,6 +56,7 @@ services:
 
   §§INSTANCE-db:
     image: muccg/postgres-ssl:9.4
+    container_name:  §§INSTANCE-db    
     environment:
       - POSTGRES_USER=webapp
       - POSTGRES_PASSWORD=webapp
@@ -63,6 +65,7 @@ services:
 
   §§INSTANCE-dbclinical:
     image: muccg/postgres-ssl:9.4
+    container_name:  §§INSTANCE-dbclinical   
     environment:
       - POSTGRES_USER=webapp
       - POSTGRES_PASSWORD=webapp
@@ -71,20 +74,23 @@ services:
 
   §§INSTANCE-cache:
     image: memcached:1.4
+    container_name:  §§INSTANCE-cache  
 
   §§INSTANCE-mongo:
     image: mongo:3.0
+    container_name:  §§INSTANCE-mongo     
     command: mongod --smallfiles
 
   §§INSTANCE-triplestore:
     image: muccg/allegro:4.14.1
+    container_name:  §INSTANCE-triplestore       
     ports:
       - "10035"
 
 
   §§INSTANCE-rdrf-data:
     image: busybox
-    container_name: §§INSTANCE-rdrf-data
+    container_name:  §§INSTANCE-rdrf-data    
     volumes:
         - ./data:/data
       
