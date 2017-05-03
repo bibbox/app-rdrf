@@ -75,13 +75,6 @@ services:
     ports:
       - "10035"
 
-  §§INSTANCE-nginx:
-    image: muccg/nginx-uwsgi:1.10
-    ports:
-      - "8443:443"
-      - "8080:80"
-    volumes:
-      - ./data/nginx:/data
 
   §§INSTANCE-rdrf-data:
     image: busybox
