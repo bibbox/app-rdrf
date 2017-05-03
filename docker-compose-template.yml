@@ -17,7 +17,13 @@ services:
         - §§INSTANCE-db
         - §§INSTANCE-dbclinical
         - §§INSTANCE-cache
-        - §§INSTANCE-mongo      
+        - §§INSTANCE-mongo 
+    links:
+        - §§INSTANCE-db:db
+        - §§INSTANCE-dbclinical:dbclinical
+        - §§INSTANCE-cache:cache
+        - §§INSTANCE-mongo:mongo 
+             
     environment:
       - DEBUG=0
       - WAIT_FOR_DB=1
